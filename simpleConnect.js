@@ -2,8 +2,7 @@
 const { ApiPromise, WsProvider } = require('@polkadot/api');
 
 async function main () {
-  // const wsProvider = new WsProvider('wss://rpc.polkadot.io');
-  const wsProvider = new WsProvider('wss://polkadot-dot-ws.bbc2.io');
+  const wsProvider = new WsProvider('wss://rpc.polkadot.io');
   const api = await ApiPromise.create({ provider: wsProvider });
 
   // Make our basic chain state/storage queries, all in one go
