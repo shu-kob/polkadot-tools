@@ -33,6 +33,24 @@ async function main () {
 
   console.log(`currentBlock: ${currentBlockInfo}`);
 
+  const [finalizedHead] = await Promise.all([
+    api.rpc.chain.getFinalizedHead()
+  ]);
+
+  console.log(`finalizedHead: ${finalizedHead}`);
+
+  const [finalizedHeadBlock] = await Promise.all([
+    api.rpc.chain.getHeader(finalizedHead)
+  ]);
+
+  console.log(`finalizedHeadBlock: ${finalizedHeadBlock}`);
+
+  const [methods] = await Promise.all([
+    api.rpc.rpc.methods()
+  ]);
+
+  console.log(`methods: ${methods}`);
+
 }
 
 main().catch(console.error).finally(() => process.exit());
