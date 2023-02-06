@@ -25,7 +25,7 @@ async function main () {
     api.rpc.state.getRuntimeVersion()
   ]);
 
-  console.log(`currentRuntimeVersion: ${runtimeVersion}`);
+  console.log(`currentspecVersion: ${runtimeVersion.specVersion}`);
 
   const [currentBlockInfo] = await Promise.all([
     api.rpc.chain.getHeader(currentBlockHash),
