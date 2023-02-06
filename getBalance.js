@@ -1,5 +1,5 @@
 // Import the API
-const { ApiPromise, WsProvider } = require('@polkadot/api');
+import { ApiPromise, WsProvider } from '@polkadot/api';
 
 // Our address for Alice on the dev chain
 const ALICE = '5D7BtZu8HmTiCsMzkwH7EjFqphJEq4Lk6AHpighPVuABRhxG';
