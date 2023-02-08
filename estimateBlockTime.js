@@ -2,10 +2,12 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
 
 async function main () {
-  const wsProvider = new WsProvider('wss://rpc.polkadot.io');
-  // const wsProvider = new WsProvider('wss://westend-rpc.polkadot.io');
+  // const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+  const wsProvider = new WsProvider('wss://westend-rpc.polkadot.io');
   // const wsProvider = new WsProvider('wss://kusama-rpc.polkadot.io');
   // const wsProvider = new WsProvider('wss://rococo-rpc.polkadot.io');
+  // const wsProvider = new WsProvider('wss://rpc.astar.network');
+  // const wsProvider = new WsProvider('wss://rpc.shibuya.astar.network');
   const api = await ApiPromise.create({ provider: wsProvider });
 
   // Make our basic chain state/storage queries, all in one go
@@ -26,6 +28,7 @@ async function main () {
   ]);
 
   console.log(`currentspecVersion: ${runtimeVersion.specVersion}`);
+  console.log(`currenttransactionVersion: ${runtimeVersion.transactionVersion}`);
 
   const [currentBlockInfo] = await Promise.all([
     api.rpc.chain.getHeader(currentBlockHash),
