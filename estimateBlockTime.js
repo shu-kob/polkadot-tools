@@ -23,6 +23,11 @@ async function main () {
 
   console.log(`currentBlockHash: ${currentBlockHash}`);
 
+  const [nodeVersion] = await Promise.all([
+    api.rpc.system.version(),
+  ]); 
+  console.log(`nodeVersion: ${nodeVersion}`);
+
   const [runtimeVersion] = await Promise.all([
     api.rpc.state.getRuntimeVersion()
   ]);
