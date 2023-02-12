@@ -52,13 +52,6 @@ async function main () {
   ]);
 
   console.log(`finalizedHeadBlock: ${finalizedHeadBlock}`);
-
-  const [methods] = await Promise.all([
-    api.rpc.rpc.methods()
-  ]);
-
-  console.log(`methods: ${methods}`);
-
 }
 
 main().catch(console.error).finally(() => process.exit());
