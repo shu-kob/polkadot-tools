@@ -4,8 +4,26 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 // Our address for Alice on the dev chain
 const ALICE = '5D7BtZu8HmTiCsMzkwH7EjFqphJEq4Lk6AHpighPVuABRhxG';
 
+let network = process.argv[2];
+
+const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+
 async function main () {
-  const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+
+  if (network == 'polkadot'){
+    const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+  } else if (network == 'kusama'){
+    const wsProvider = new WsProvider('wss://kusama-rpc.polkadot.io');
+  } else if (network == 'westend'){
+    const wsProvider = new WsProvider('wss://westend-rpc.polkadot.io');
+  } else if (network == 'rococo'){
+  const wsProvider = new WsProvider('wss://rococo-rpc.polkadot.io');
+  } else if (network == 'astar'){
+    const wsProvider = new WsProvider('wss://rpc.astar.network');
+  } else if (network == 'shibuya'){
+    const wsProvider = new WsProvider('wss://rpc.shibuya.astar.network');
+  }
+
   // Create our API with a default connection to the local node
   const api = await ApiPromise.create({ provider: wsProvider });
 
