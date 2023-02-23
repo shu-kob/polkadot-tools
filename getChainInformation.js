@@ -12,7 +12,7 @@ async function main () {
   } else if (network == 'westend'){
     const wsProvider = new WsProvider('wss://westend-rpc.polkadot.io');
   } else if (network == 'rococo'){
-  const wsProvider = new WsProvider('wss://rococo-rpc.polkadot.io');
+    const wsProvider = new WsProvider('wss://rococo-rpc.polkadot.io');
   } else if (network == 'astar'){
     const wsProvider = new WsProvider('wss://rpc.astar.network');
   } else if (network == 'shibuya'){
