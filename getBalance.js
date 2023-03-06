@@ -1,10 +1,9 @@
 // Import the API
 import { ApiPromise, WsProvider } from '@polkadot/api';
 
-// Our address for Alice on the dev chain
-const ALICE = '5D7BtZu8HmTiCsMzkwH7EjFqphJEq4Lk6AHpighPVuABRhxG';
-
 let network = process.argv[2];
+
+let address = process.argv[3];
 
 let endpoint = '';
 
@@ -30,14 +29,14 @@ async function main () {
 
   // Make our basic chain state/storage queries, all in one go
   const [{ nonce: accountNonce }, { data: balance }, now ] = await Promise.all([
-    api.query.system.account(ALICE),
-    api.query.system.account(ALICE),
+    api.query.system.account(address),
+    api.query.system.account(address),
     api.query.timestamp.now(),
   ]);
 
   let dateTime = new Date(now.toNumber());
-  console.log(`accountNonce(${ALICE}) ${accountNonce}`);
-  console.log(`accountBalance(${ALICE}) ${balance.free}`);
+  console.log(`accountNonce(${address}) ${accountNonce}`);
+  console.log(`accountBalance(${address}) ${balance.free}`);
   console.log(`last block timestamp ${dateTime.toString()}`);
 
 }
