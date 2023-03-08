@@ -21,8 +21,10 @@ async function main () {
     endpoint = 'wss://rpc.polkadot.io';
   }
   let wsProvider = new WsProvider(endpoint);
+
   // Create a new instance of the api
   const api = await ApiPromise.create({ provider: wsProvider });
+
   // get the chain information
   const chainInfo = await api.registry.getChainProperties()
 
