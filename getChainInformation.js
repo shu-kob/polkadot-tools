@@ -3,8 +3,6 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 
 let network = process.argv[2];
 
-let address = process.argv[3];
-
 let endpoint = '';
 
 async function main () {
@@ -24,21 +22,15 @@ async function main () {
   }
   let wsProvider = new WsProvider(endpoint);
 
-  // Create our API with a default connection to the local node
+  // Create a new instance of the api
   const api = await ApiPromise.create({ provider: wsProvider });
 
-  // Make our basic chain state/storage queries, all in one go
-  const [{ nonce: accountNonce }, { data: balance }, now ] = await Promise.all([
-    api.query.system.account(address),
-    api.query.system.account(address),
-    api.query.timestamp.now(),
-  ]);
+  // get the chain information
+  const chainInfo = await api.registry.getChainProperties()
 
-  let dateTime = new Date(now.toNumber());
-  console.log(`accountNonce(${address}) ${accountNonce}`);
-  console.log(`accountBalance(${address}) ${balance.free}`);
-  console.log(`last block timestamp ${dateTime.toString()}`);
-
+  console.log(chainInfo);
+  // for Polkadot this would print
+  // {ss58Format: 0, tokenDecimals: [10], tokenSymbol: [DOT]}
 }
 
-main().catch(console.error).finally(() => process.exit());
+main().catch(console.error).finally(() => process.exit());;

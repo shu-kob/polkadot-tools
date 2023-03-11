@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/shu-kob/polkadot-sample/issues"
   },
-  "homepage": "https://github.com/shu-kob/polkadot-sample#readme"
+  "homepage": "https://github.com/shu-kob/polkadot-sample#readme",
+  "type": "module"
 }
